@@ -1,0 +1,176 @@
+{
+  "app_name": "Devrion Cafe POS",
+  "personality": "6 Glass / Luxe DARK fused with 7 Dark-First Utility",
+  "personality_one_liner": "A cinematic, dark-glassmorphism operational powerhouse with warm orange glows and frosted glass surfaces that feels both premium and highly functional.",
+  "color": {
+    "surface": "#0D0D0D",
+    "onSurface": "#FFFFFF",
+    "surfaceSecondary": "#1A1A1A",
+    "onSurfaceSecondary": "#F2F2F2",
+    "surfaceTertiary": "#262626",
+    "onSurfaceTertiary": "#E5E5E5",
+    "surfaceInverse": "#FFFFFF",
+    "onSurfaceInverse": "#0D0D0D",
+    "brand": "#FF6B00",
+    "brandPrimary": "#FF7A00",
+    "onBrandPrimary": "#FFFFFF",
+    "brandSecondary": "#FFA34D",
+    "onBrandSecondary": "#1A1A1A",
+    "brandTertiary": "#331800",
+    "onBrandTertiary": "#FFD6B3",
+    "success": "#00C853",
+    "onSuccess": "#FFFFFF",
+    "warning": "#FFD600",
+    "onWarning": "#1A1A1A",
+    "error": "#FF3D00",
+    "onError": "#FFFFFF",
+    "info": "#29B6F6",
+    "onInfo": "#FFFFFF",
+    "border": "#262626",
+    "borderStrong": "#404040",
+    "divider": "#1A1A1A",
+    "muted": "#8C8C8C",
+    "onBrand": "#FFFFFF"
+  },
+  "typography": {
+    "displayFontFamily": "Space Grotesk",
+    "textFontFamily": "Geist",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Use generous spacing to let frosted glass cards breathe. Tighten spacing in the POS grid and Kanban columns for utility density.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": "1",
+  "navigation": "drawer",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use blur on elevated cards (frosted glass) with a translucent tinted base (rgba(26,26,26, 0.75)).",
+      "Apply glass effects on sticky headers, bottom order sheets, and modal scrims.",
+      "Add warm orange glows behind featured items or critical CTA buttons using subtle radial gradients."
+    ],
+    "dont's": [
+      "Do not blur dense form fields or Kanban card content.",
+      "Do not over-blur the background to the point it becomes noisy."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Login",
+      "purpose": "A unified login gateway for Founder, Admin, Kasir, and Dapur featuring dark glassmorphism and Devrion branding.",
+      "states": {
+        "loading": "Orange glow spinner centered on dark background.",
+        "empty": "N/A",
+        "error": "Frosted glass modal with orange/red error text."
+      },
+      "layout": "Full-screen dark cafe background image with heavy glass scrim. Centered login card (frosted glass, 20-24px rounded). Bold white heading with orange highlight 'Good Food Good Mood!'. Small 'Devrion' logo and tagline at the very bottom. Orange gradient CTA."
+    },
+    {
+      "name": "Customer Menu (Web)",
+      "purpose": "No-login NFC/QR menu for customers to order directly to their table.",
+      "states": {
+        "loading": "Skeleton grids of menu items.",
+        "empty": "Glass card: 'Menu is currently unavailable.'",
+        "error": "Retry connection button."
+      },
+      "layout": "Grid layout of food items with photos. Sticky bottom cart sheet (glassmorphism) over the scrolling menu. Success order animation (Lottie/Reanimated) and digital receipt pop-up upon checkout."
+    },
+    {
+      "name": "Kasir (POS)",
+      "purpose": "Real-time order taking and management for the cashier.",
+      "states": {
+        "loading": "Spinner in the menu section.",
+        "empty": "No active orders in the cart.",
+        "error": "Failed to sync order."
+      },
+      "layout": "Responsive split screen: Left 2/3 for menu categories (horizontal chips) and item grid (frosted cards). Right 1/3 fixed glassmorphism sidebar for current order summary, incoming QR orders, and orange CTA 'Send to Kitchen'."
+    },
+    {
+      "name": "Dapur (Kanban)",
+      "purpose": "Kitchen display system for order progression via drag-and-drop.",
+      "states": {
+        "loading": "Loading tickets...",
+        "empty": "Illustration of a clean kitchen - 'No active orders.'",
+        "error": "Connection lost - 'Reconnecting...'"
+      },
+      "layout": "Horizontal scrollable board with 4 columns: Baru (New), Dimasak (Cooking), Siap (Ready), Disajikan (Served). Cards use high-contrast dark utility design with elapsed timers. Drag and drop gestures to move tickets between columns."
+    },
+    {
+      "name": "Admin Dashboard",
+      "purpose": "Management view for reports, menus, tables, and settings.",
+      "states": {
+        "loading": "Loading stats...",
+        "empty": "No data for this period.",
+        "error": "Error fetching reports."
+      },
+      "layout": "Sidebar navigation (Drawer on mobile). Main area displays financial report cards, charts, and lists for managing menus, photos, tables (QR code generator), and settings (QRIS, Logo)."
+    },
+    {
+      "name": "Founder Dashboard",
+      "purpose": "High-level management of all Cafe & Resto branches without revenue visibility.",
+      "states": {
+        "loading": "Loading branches...",
+        "empty": "No branches added yet.",
+        "error": "Error fetching branches."
+      },
+      "layout": "Grid of branch cards (frosted glass) displaying active status, location, and staff count. Excludes any financial metrics."
+    }
+  ],
+  "images": {
+    "login_background": {
+      "url": "https://images.unsplash.com/photo-1745066113904-e8449839197b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHwyfHxkYXJrJTIwbW9vZHklMjBjYWZlJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3OTQyMDM2MjV8MA&ixlib=rb-4.1.0&q=85",
+      "dark": "https://images.unsplash.com/photo-1745066113904-e8449839197b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHwyfHxkYXJrJTIwbW9vZHklMjBjYWZlJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3OTQyMDM2MjV8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Dark moody cafe interior background"
+    },
+    "food_burger": {
+      "url": "https://images.unsplash.com/photo-1611309454921-16cef3438ee0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwyfHxkZWxpY2lvdXMlMjBmb29kJTIwYnVyZ2VyJTIwcGl6emElMjBkYXJrJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3OTQyMDM2MjV8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Delicious burger on dark background"
+    },
+    "food_pizza": {
+      "url": "https://images.unsplash.com/photo-1617190055866-a579de31664e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHw0fHxkZWxpY2lvdXMlMjBmb29kJTIwYnVyZ2VyJTIwcGl6emElMjBkYXJrJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3OTQyMDM2MjV8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "Delicious pizza on dark background"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly follow the Dark Glassmorphism theme: use '#0D0D0D' as the app background and '#1A1A1A' with 75% opacity and a blur effect for cards/surfaces.",
+    "Accent everything with the warm orange brand color ('#FF7A00'). CTA buttons must use orange linear gradients (e.g., #FF7A00 to #FFA34D vertically) to match the requirement 'orange gradient CTA buttons'.",
+    "Headings must be bold and white. Use `<Text>` styling to highlight specific words like 'Good Mood!' in orange.",
+    "Implement the Kanban board in the Dapur screen using a responsive horizontal ScrollView containing columns, and `react-native-reanimated` / `react-native-gesture-handler` for drag-and-drop interactions.",
+    "The UI must be completely responsive: mobile screens use bottom tabs or drawer, but tablet/desktop should utilize a side navigation and a split POS layout (Menu on left, Cart on right).",
+    "For the Devrion branding on the login page: build it using a small SVG 'D' path in navy with cyan accents, accompanied by the text 'Custom Apps, Built for Growth' in small muted typography at the bottom.",
+    "Ensure the Customer Menu (Web) uses a sticky bottom cart that overlaps the menu, applying a heavy blur to ensure readability.",
+    "MANDATORY: Animate transitions and success states heavily using `react-native-reanimated` to meet the 'Penuh animasi keren' requirement."
+  ]
+}
